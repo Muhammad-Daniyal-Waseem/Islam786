@@ -1,7 +1,4 @@
-import {React,useState,useEffect} from 'react'
-
-
-
+import {React,useState,useEffect} from 'react';
 
 // setInterval(Timer=()=>{
 //   setcurrentDate(new Date());
@@ -58,10 +55,10 @@ useEffect(() => {
     }}>
 
 <div className='flex'>
-  <div className='flex h-12 w-8/12'>
+  <div className='flex h-12 w-8/12 py-4'>
 <div className=' h-12 w-5/12 py-4 flex items-center justify-around min-[279px]:w-full max-[400]:w-full ' style={{color: '#c5e3cd'}}>
   <a href='/'><i className={`text_hover_effect fa-solid  fa-${props.sizing}x fa-bars hover:underline hover:underline-offset-8`}></i></a>
-  <a href='/' className={`text_hover_effect text-${window.outerWidth>416?"2xl":"sm"} mx-2 hover:underline hover:underline-offset-8`}>Home</a>
+  <a href='/' className={`text_hover_effect text-${window.outerWidth<416?"sm":"2xl"} mx-2 hover:underline hover:underline-offset-8`}>Home</a>
  <a href='/'><i className={`text_hover_effect fas fa-${props.sizing}x fa-book-open hover:underline hover:underline-offset-8`}></i></a> 
 </div>
 </div>
