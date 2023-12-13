@@ -1,12 +1,13 @@
 import React from 'react'
 
 function Hero_section(props) {
+
   return (
-    <div className='text-white mx-3 rounded-lg'style={{ backgroundColor: '#263329'}}>
+    <div className='text-white mx-3 rounded-lg h-screen z-0'style={{ backgroundColor: '#263329'}}>
       <div className='flex justify-between mx-6 py-6'>
         <div>
           <p>Verse</p>
-          <p style={{color:"#c0f70a",}}>By GFS</p>
+          <p style={{color:"#c0f70a",}}>By Islam786</p>
           <p>Surat-ul-Kaahaf[18-24]</p>
         </div>
         <div style={{color: '#c5e3cd'}}  className='flex justify-center items-center '>

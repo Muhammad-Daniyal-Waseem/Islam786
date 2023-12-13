@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Hadees from './Hadees';
 import Section from './Section';
 
-function App() {
+function App(props) {
   const [name, setName] = useState(null);
   const [lan, setLang] = useState('urd');
   const [limit, setLimit] = useState(0);
@@ -27,6 +27,7 @@ function App() {
  setSihaSittaBooks({
           english: sihaSittaEnglishNames,
         });
+        console.log("Name1 = ",sihaSittaBooks);
         arrofno = new Array(sihaSittaEnglishNames.length);
         for (let i = 0; i < sihaSittaEnglishNames.length; i++) {
           arrofno[i] = jsonData[sihaSittaEnglishNames[i]].hadiths.length;
@@ -50,6 +51,7 @@ function App() {
     setLang(a);
   }
 
+
   function back() {
     setBooks(true);
     setShowLanguageButtons(false);
@@ -60,8 +62,8 @@ function App() {
     setShowSections(false);
    }
   return (
-    <>
-      <div className={`px-3 flex ${window.outerWidth<290?"flex-col justify-center":""}} flex-wrap my-4 mx-auto h-fit w-fit rounded-lg`}>
+    <div className={`${showLanguageButtons?"pb-24":""}`}>
+      <div className={`px-3  pb-4 flex ${window.outerWidth<290?"flex-col justify-center":""}} ${window.outerWidth<889?"":"my-4"} flex-wrap h-fit mb-16 w-full rounded-lg `}>
         {showbooks&&sihaSittaBooks &&
           sihaSittaBooks.english.map((element, index) => (
             <Hadees
@@ -78,32 +80,32 @@ function App() {
           
           ))}
       </div>
-      <div className="language-buttons1">
+      <div className={`language-buttons1 ${window.outerWidth<300?"text-xs":""} `}>
       {!showbooks&&!showSections&&off&&
-        <button className='text-white w-20 flex justify-center items-center px-2 py-2 m-4 rounded-2xl hover:text-yellow-200' style={{ backgroundColor: '#263329'}} onClick={back}><i class=" text-white fa-solid fa-arrow-left px-2 hover:text-yellow-200"></i>Back</button>
+        <button className='text-white border w-20 flex justify-center items-center px-2 py-2 m-4 rounded-2xl hover:text-yellow-200' style={{ backgroundColor: '#263329'}} onClick={back}><i class=" text-white fa-solid fa-arrow-left px-2 hover:text-yellow-200"></i>Back</button>
 
 }</div>
- <div className="language-buttons1">
+ <div className={`${window.outerWidth<300?"text-xs":""} language-buttons1 z-30 ${showSections?"absolute top-0":" "}`}>
       {!showbooks&&!showLanguageButtons&&showSections&&off&&
-       <button className='text-white w-20 flex justify-center items-center px-2 py-2 m-4 rounded-2xl hover:text-yellow-200' style={{ backgroundColor: '#263329'}} onClick={back1}><i class=" text-white fa-solid fa-arrow-left px-2 hover:text-yellow-200"></i>Back</button>
+       <button className=' text-white w-20 z-30 flex border justify-center items-center px-2 py-2 m-4 rounded-2xl hover:text-yellow-200' style={{ backgroundColor: '#263329'}} onClick={back1}><i class=" text-white z-20 fa-solid fa-arrow-left px-2 hover:text-yellow-200"></i>Back</button>
 
 }</div>
 
 
       {showLanguageButtons && (
-  <div className="mx-auto rounded-2xl  language-buttons flex flex-wrap justify-around text-white h-20 w-3/4" style={{ backgroundColor: '#263329'}}>
-    <button className={` text-${window.outerWidth<300?"xs":"lg"} mx-2 font-bold hover:text-yellow-200 hover:underline decoration-4 hover:underline-offset-8`}  onClick={() => def("eng")}>English</button>
-    <button className={` text-${window.outerWidth<300?"xs":"lg"} mx-2 font-bold hover:text-yellow-200 hover:underline decoration-4 hover:underline-offset-8`} onClick={() => def("urd")}>Urdu</button>
-    <button className={` text-${window.outerWidth<300?"xs":"lg"} font-bold hover:text-yellow-200 hover:underline decoration-4 hover:underline-offset-8`} onClick={() => def("ind")}>Indonesian</button>
-    <button className={` text-${window.outerWidth<300?"xs":"lg"} mx-2 font-bold hover:text-yellow-200 hover:underline decoration-4 hover:underline-offset-8`} onClick={() => def("ben")}>Bengali</button>
-    <button className={` text-${window.outerWidth<300?"xs":"lg"} font-bold hover:text-yellow-200 hover:underline decoration-4 hover:underline-offset-8`} onClick={() => def("tur")}>Turkish</button>
-    <button className={` text-${window.outerWidth<300?"xs":"lg"} font-bold hover:text-yellow-200 hover:underline decoration-4 hover:underline-offset-8`} onClick={() => def("ara")}>Arabic</button>
+  <div className={`mx-auto rounded-2xl  border ${window.outerWidth<340?" p-2":""} ${window.outerWidth<650?"flex-col":""} ${window.outerWidth>650?"relative bottom-14":""} language-buttons flex flex-wrap justify-around text-white h-20 w-3/4 `} style={{ backgroundColor: '#263329'}}>
+    <button className={` text-${window.outerWidth<300?"xs":"lg"} btn_decoration`}  onClick={() => def("eng")}>English</button>
+    <button className={` text-${window.outerWidth<300?"xs":"lg"} btn_decoration`} onClick={() => def("urd")}>Urdu</button>
+    <button className={` text-${window.outerWidth<300?"xs":"lg"} btn_decoration`} onClick={() => def("ind")}>Indonesian</button>
+    <button className={` text-${window.outerWidth<300?"xs":"lg"} btn_decoration`} onClick={() => def("ben")}>Bengali</button>
+    <button className={` text-${window.outerWidth<300?"xs":"lg"} btn_decoration`} onClick={() => def("tur")}>Turkish</button>
+    <button className={` text-${window.outerWidth<300?"xs":"lg"} btn_decoration`} onClick={() => def("ara")}>Arabic</button>
   </div>
 )}
 
 
-      {showSections && <Section setOff={setOff} setName={name} lan={lan} totalhadees={limit} />}
-    </>
+      {showSections && <Section name={name} setOff={setOff} setName={name} lan={lan} totalhadees={limit} />}
+    </div>
   );
 }
 

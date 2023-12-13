@@ -1,8 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body{
+
+html,body{
   background-color: #1c2121;
+  overflow-x: hidden;
+  position: relative;
+  top: 0%;
+  height: 100%;
+  margin: 0;
+}
+
+
+.ayah-box {
+  color: white;
+   background-color: #1c2121;
+  border: 1px solid green;
+   padding: 10px;
+   margin-bottom: 10px;
+   border-radius: 10px;
+   margin-left: 12px;
+   margin-right: 12px;
 }
 
 .text_hover_effect {
@@ -13,4 +31,8 @@ body{
 }
 .border_s {
   @apply  border-white border-solid border-2;
+}
+.btn_decoration
+{
+  @apply mx-auto font-bold hover:text-yellow-200 hover:underline decoration-4 hover:underline-offset-8;
 }
