@@ -65,7 +65,7 @@ function App(props) {
     <div className={`${showLanguageButtons?"pb-24":""}`}>
       <div className={`px-3  pb-4 flex ${window.outerWidth<290?"flex-col justify-center":""}} ${window.outerWidth<889?"":"my-4"} flex-wrap h-fit mb-16 w-full rounded-lg `}>
         {showbooks&&sihaSittaBooks &&
-          sihaSittaBooks.english.map((element, index) => (
+          sihaSittaBooks.english.slice(0, 6).map((element, index) => (
             <Hadees
             image_counter={++image_counter}
               key={index}
